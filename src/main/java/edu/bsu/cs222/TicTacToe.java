@@ -18,7 +18,7 @@ public class TicTacToe {
         int chosenCell = -1;
         for (int i = 0; i < blocks.size(); i++){
             if (findCellToBeMarked(blocks.get(i)) != -1){
-                if(findCellTobeMarked(blocks.get(i)) > 2){
+                if(findCellToBeMarked(blocks.get(i)) > 2){
                     chosenBlock = i;
                     chosenCell = findCellToBeMarked(blocks.get(i)) - 3;
                 }
@@ -88,23 +88,118 @@ public class TicTacToe {
             case 2:
                 return extractRow3(cellIndex);
             case 3:
-                return exractCol1(cellIndex);
+                return extractCol1(cellIndex);
             case 4:
                 return extractCol2(cellIndex);
             case 5:
                 return extractCol3(cellIndex);
             case 6:
-                return extractCol
+                return extractDiagonal1(cellIndex);
+            case 7:
+                return extractDiagonal2(cellIndex);
         }
+        return -1;
     }
 
     private int extractRow1(int cellIndex) {
+        if(cellIndex == 0){
+            return 0;
+        }
+        if (cellIndex == 1){
+            return 1;
+        }
+        if (cellIndex == 2){
+            return 2;
+        }
+        return -1;
     }
     private int extractRow2(int cellIndex) {
-        return 0;
+        if(cellIndex == 0){
+            return 3;
+        }
+        if(cellIndex == 1){
+            return 4;
+        }
+        if (cellIndex == 2){
+            return 5;
+        }
+        return -1;
     }
     private int extractRow3(int cellIndex){
+        if(cellIndex == 0){
+            return 6;
+        }
+        if(cellIndex == 1){
+            return 7;
+        }
+        if (cellIndex == 2){
+            return 8;
+        }
+        return -1;
+    }
+    private int extractCol1(int cellIndex){
+        if (cellIndex == 0){
+            return 0;
+        }
+        if(cellIndex == 1){
+            return 3;
+        }
+        if(cellIndex == 2){
+            return 6;
+        }
+        return -1;
+    }
 
+    private int extractCol2(int cellIndex){
+        if(cellIndex == 0){
+            return 1;
+        }
+        if(cellIndex == 1){
+            return 4;
+        }
+        if (cellIndex == 2){
+            return 7;
+        }
+        return -1;
+    }
+
+    private int extractCol3(int cellIndex){
+        if(cellIndex == 0){
+            return 2;
+        }
+        if(cellIndex == 1){
+            return 5;
+        }
+        if (cellIndex == 2){
+            return 8;
+        }
+        return -1;
+    }
+
+    private int extractDiagonal1(int cellIndex){
+        if(cellIndex == 0){
+            return 0;
+        }
+        if(cellIndex == 1){
+            return 4;
+        }
+        if (cellIndex == 2){
+            return 8;
+        }
+        return -1;
+    }
+
+    private int extractDiagonal2(int cellIndex){
+        if(cellIndex == 0){
+            return 2;
+        }
+        if(cellIndex == 1){
+            return 4;
+        }
+        if (cellIndex == 2){
+            return 6;
+        }
+        return -1;
     }
 
     private void checkVictory(){
@@ -120,4 +215,5 @@ public class TicTacToe {
             this.winner = "Computer";
         }
     }
+
 }

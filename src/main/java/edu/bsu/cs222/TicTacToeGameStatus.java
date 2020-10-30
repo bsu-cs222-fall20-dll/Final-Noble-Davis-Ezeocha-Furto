@@ -164,4 +164,5 @@ public class TicTacToeGameStatus {
         }
         return openCells;
     }
+
 }
