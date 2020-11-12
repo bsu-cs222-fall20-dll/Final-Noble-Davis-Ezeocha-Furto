@@ -12,4 +12,13 @@ public class TicTacToeTest {
         ticTacToe.playerturn(5);
         assertEquals(ticTacToe.gameStatus.cells[5],1);
     }
+    @Test
+    public void victoryRecognized(){
+        TicTacToe ticTacToe = new TicTacToe();
+        ticTacToe.playerturn(0);
+        ticTacToe.playerturn(1);
+        ticTacToe.playerturn(2);
+        assertEquals("Player", ticTacToe.winner);
+    }
+
 }
