@@ -5,14 +5,17 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 
 
 public class ProgressBarController {
 
     @FXML
     private Label progressBarLabel;
-    private DoubleProperty progressNumber;
+    public DoubleProperty progressNumber;
     ProgressBar progressBar = new ProgressBar();
+    @FXML
+    private ProgressIndicator progressIndicator;
 
     //doubleProperty For The ProgressIndicator
     public final double getProgressNumber(){
@@ -33,6 +36,7 @@ public class ProgressBarController {
     //ProgressBar
 
     public void initialize(){
+        progressBar.progressProperty().bind(progressNumber);
 
     }
 

@@ -82,7 +82,7 @@ public class Controller extends CalendarUI{
         alert.show();
     }
 
-    /**public void randomizeGame(){//parse thru game choices and load game
+    public void randomizeGame(){//parse thru game choices and load game
         gameList; //list of games
     }
     public void startChallenge(int mode){//begins daily cha
@@ -95,7 +95,7 @@ public class Controller extends CalendarUI{
         ticTacToe.setVisible(true);
         gameName.setText("Tic Tac Toe");
 
-    }*/
+    }
     public void startTicTacToe(int mode){
         currentGame ="TicTacToe";
         resetGamePane();
@@ -116,7 +116,8 @@ public class Controller extends CalendarUI{
 
 
     public void restartProgressBar() {
-        progressBarController.progressBar.
+        progressBarController.progressBar.progressProperty();
+        progressBarController.resetProgressBar();
     }
 
     public void notifyLoss() {
@@ -125,7 +126,11 @@ public class Controller extends CalendarUI{
     public void progressToNextDay(int i) {
     }
 
+
     public void notifyWin() {
+
+        ProgressBarController progressBarController = new ProgressBarController();
+        progressBarController.progressBar.progressProperty().bind(progressToNextDay(0)progressBarController.progressNumber);
 
     }
 }

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -19,7 +16,7 @@
             <Font size="28.0" />
         </font>
     </Label>
-    <Pane layoutY="24.0" layoutX="600.0" prefHeight="75" prefWidth="25" style="">
+    <Pane layoutY="24.0" layoutX="600.0" prefHeight="75" prefWidth="25" style="-fx-color: Green">
         <fx:include source="ProgressBar.fxml" fx:id="progressBarController"/>
     </Pane>
     <Label fx:id="gameNotificationLabel" alignment="CENTER" layoutX="324.0" layoutY="24.0" prefHeight="60.0" prefWidth="291.0" textAlignment="CENTER" wrapText="true">
