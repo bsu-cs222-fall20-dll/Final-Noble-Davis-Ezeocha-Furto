@@ -202,18 +202,14 @@ public class TicTacToeController {
             String winner = convertPlayerNumberToString(game.gameStatus.checkBoard());
             gameIsPlaying = false;
             if (winner != null){
-                if (winner != null){
-                    if (winner.equals("Player")){
-                        declareVictory();
-                    }else {
-                        declareLoss();
-                    }
+                if (winner.equals("Player")){
+                    declareVictory();
+                }else {
+                    declareLoss();
                 }
             }
         }
     }
-
-
 
     private void declareLoss() {
         mainController.notifyLoss();
