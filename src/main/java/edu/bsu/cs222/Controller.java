@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.*;
 
@@ -19,8 +18,7 @@ public class Controller extends CalendarUI{
     @FXML
     public Label gameName;
 
-    @FXML
-    private Pane ProgressBar;
+
 
     @FXML
     private Pane ticTacToe;
@@ -30,13 +28,16 @@ public class Controller extends CalendarUI{
     private Button startDailyChallengeButton;
 
     @FXML
+    private Button instruction;
+
+    @FXML
     public Label gameNotificationLabel;
 
     @FXML
     private TicTacToeController ticTacToeController;
 
     @FXML
-    private ProgressBar progressBarController;
+    private ProgressBarController progressBarController;
 
     public ArrayList<String> gameList = new ArrayList<>();//all the games to be randomize and create
 
@@ -46,7 +47,7 @@ public class Controller extends CalendarUI{
 
     public void initialize(){
         addGamesToTheGameList();
-        //progressBarController.initialize();
+        progressBarController.initialize();
         startDailyChallengeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -54,10 +55,34 @@ public class Controller extends CalendarUI{
                 startTicTacToe(0);
             }
         });
+        instruction.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showInformation();
+            }
+        });
+        instruction.setFocusTraversable(false);
+
     }
     private void addGamesToTheGameList(){
         gameList.add("Tic Tac Toe");
         //gameList.add(ticTacToeController) fix later
+    }
+    private void showInformation(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setWidth(200);
+        alert.setHeight(300);
+        alert.setTitle("Instruction");
+        alert.setHeaderText(currentGame + "Instructions");
+        switch (currentGame){
+            case "TicTacToe":
+                alert.setContentText("Click the boxes to place Xs and if you get 3 in a row you win and can advance to the next day of games.");
+                break;
+            case "Snake":
+                alert.setContentText("Use the arrows to manevuever around and each stuff, or the use W to move up, S to move down, A to move left, and D to move right. \n the more you eat the bigger you get. \n Remember don't hit walls or your tail.");
+                break;
+        }
+        alert.show();
     }
 
     /**public void randomizeGame(){//parse thru game choices and load game
@@ -77,6 +102,7 @@ public class Controller extends CalendarUI{
     public void startTicTacToe(int mode){
         currentGame ="TicTacToe";
         resetGamePane();
+        restartProgressBar();
         ticTacToeController.initialize(this, mode);
         ticTacToe.setVisible(true);
         gameName.setText("TicTacToe");
@@ -93,6 +119,7 @@ public class Controller extends CalendarUI{
 
 
     public void restartProgressBar() {
+        progressBarController.progressBar.
     }
 
     public void notifyLoss() {
