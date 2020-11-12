@@ -20,5 +20,23 @@ public class TicTacToeTest {
         ticTacToe.playerturn(2);
         assertEquals("Player", ticTacToe.winner);
     }
+    @Test
+    public void rowsMarkedCorrectly(){
+        TicTacToe ticTacToe = new TicTacToe();
+        ticTacToe.playerturn(4);
+        assertEquals(1,ticTacToe.gameStatus.row2[1]);
+    }
+    @Test
+    public void columnsMarkedCorrectly(){
+        TicTacToe ticTacToe = new TicTacToe();
+        ticTacToe.playerturn(4);
+        assertEquals(1, ticTacToe.gameStatus.col2[1]);
+    }
+    @Test
+    public void diagonalsMarkedCorrectly(){
+        TicTacToe ticTacToe = new TicTacToe();
+        ticTacToe.playerturn(4);
+        assertEquals(1, ticTacToe.gameStatus.diag1[1]);
+    }
 
 }
