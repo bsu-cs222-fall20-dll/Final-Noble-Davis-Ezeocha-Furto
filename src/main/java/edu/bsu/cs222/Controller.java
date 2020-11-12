@@ -18,11 +18,8 @@ public class Controller extends CalendarUI{
     @FXML
     public Label gameName;
 
-
-
     @FXML
     private Pane ticTacToe;
-
 
     @FXML
     private Button startDailyChallengeButton;

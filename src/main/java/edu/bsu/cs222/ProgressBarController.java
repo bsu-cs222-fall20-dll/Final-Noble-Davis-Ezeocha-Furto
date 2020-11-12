@@ -13,6 +13,7 @@ public class ProgressBarController {
     private Label progressBarLabel;
     private DoubleProperty progressNumber;
     ProgressBar progressBar = new ProgressBar();
+
     //doubleProperty For The ProgressIndicator
     public final double getProgressNumber(){
         if (progressNumber != null)

@@ -44,6 +44,7 @@ public class TicTacToeController {
     private boolean gameIsPlaying = false;
     private TicTacToe game;
     private Controller mainController;
+    final ProgressBarController progressBarController = new ProgressBarController();
 
     public void initialize(Controller controller, int mode){
         this.mainController = controller;
@@ -223,6 +224,7 @@ public class TicTacToeController {
         mainController.notifyWin();
         if (mode == 0){
             mainController.progressToNextDay(0);
+            progressBarController.setProgressNumber(progressBarController.getProgressNumber() + 1);
         }else if(mode == 1){
             restartGame();
             mainController.restartProgressBar();

@@ -20,7 +20,18 @@
         </font>
     </Label>
     <Pane layoutY="24.0" layoutX="600.0" prefHeight="75" prefWidth="25" style="">
-        <fx:include source=""
+        <fx:include source="ProgressBar.fxml" fx:id="progressBarController"/>
     </Pane>
-
+    <Label fx:id="gameNotificationLabel" alignment="CENTER" layoutX="324.0" layoutY="24.0" prefHeight="60.0" prefWidth="291.0" textAlignment="CENTER" wrapText="true">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    <Button fx:id="startDailyChallengeButton" layoutX="18.0" layoutY="104.0" contentDisplay="CENTER" mnemonicParsing="false" textAlignment="CENTER">
+    </Button>
+    <Button fx:id="instruction" layoutX="264.0" layoutY="24.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" text="help">
+        <font>
+            <Font size="28.0" />
+        </font>
+    </Button>
 </AnchorPane>
