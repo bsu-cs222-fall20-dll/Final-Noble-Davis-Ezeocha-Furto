@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.*;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class Controller extends CalendarUI{
 
     @FXML
-    Pane gamePane;
+    Pane individualGamePane;
 
     @FXML
     public Label gameName;
