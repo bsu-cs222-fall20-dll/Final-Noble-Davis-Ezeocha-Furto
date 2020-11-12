@@ -30,7 +30,7 @@ public class CalendarUI extends Application {
     }
 
     private VBox createCalendar() {
-        Label month = new Label("July");
+        Label month = new Label("Winter");
         calendar.addColumn(3);
         calendar.addRow(1);
         Button button = createDayButton();
