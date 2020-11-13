@@ -4,11 +4,13 @@ package edu.bsu.cs222;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.control.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Controller extends CalendarUI{
 
@@ -36,8 +38,8 @@ public class Controller extends CalendarUI{
     @FXML
     private ProgressBarController progressBarController;
 
-    public ArrayList<String> gameList = new ArrayList<>();//all the games to be randomize and create
-
+    public ArrayList<Games> gameList = new ArrayList<Games>();//all the games to be randomize and create
+    ArrayList<String> listOfDailyChallenge = new ArrayList<>();
     private String currentGame = "Main Menu";
     //private int[] gameChosen; fix later
 
@@ -50,6 +52,7 @@ public class Controller extends CalendarUI{
             public void handle(ActionEvent event) {
                 gameNotificationLabel.setText("");
                 startTicTacToe(0);
+                startChallenge(0);
             }
         });
         instruction.setOnAction(new EventHandler<ActionEvent>() {
@@ -62,8 +65,8 @@ public class Controller extends CalendarUI{
 
     }
     private void addGamesToTheGameList(){
-        gameList.add("Tic Tac Toe");
-        //gameList.add(ticTacToeController) fix later
+        gameList.add(TicTacToe);//
+
     }
     private void showInformation(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -85,16 +88,42 @@ public class Controller extends CalendarUI{
     public void randomizeGame(){//parse thru game choices and load game
         gameList; //list of games
     }
-    public void startChallenge(int mode){//begins daily cha
+    public void listofChallenges(){
+        listOfDailyChallenge.add("Win Once");
+        listOfDailyChallenge.add("Win twice");
+        listOfDailyChallenge.add("Win thrice");
+    }
+    public int challengeId;
+    public int setChallengeToNumber(){
+        listofChallenges();
+        if (listOfDailyChallenge.add("Win Once")) {
+            challengeId = 0;
+        }
+        else if (listOfDailyChallenge.add("Win Twice")){
+            challengeId = 1;
+        }
+        else if(listOfDailyChallenge.add("Win Thrice")){
+            challengeId = 2;
+        }
+        else{//no challenges
+            challengeId = -1;
+        }
+        return challengeId;
+    }
+    public void randomlychooseChallenge(){
+        setChallengeToNumber();
+        Random random = new Random();
+        random.nextInt(challengeId);
+    }
+    public void startChallenge(int mode){//begins daily challege
         randomizeGame();
         currentGame = " ";
-
         resetGamePane();
-        resetProgressBar();
+        progressBarController.resetProgressBar();
         ticTacToeController.initialize(this,mode);
         ticTacToe.setVisible(true);
         gameName.setText("Tic Tac Toe");
-
+        randomlychooseChallenge();
     }
     public void startTicTacToe(int mode){
         currentGame ="TicTacToe";
