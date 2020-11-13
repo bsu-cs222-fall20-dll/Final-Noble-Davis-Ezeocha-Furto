@@ -8,6 +8,11 @@ public class VIbeBreaker extends Weapons{
     }
 
     @Override
+    public void shoot(boolean fire) {
+        super.shoot(fire);
+    }
+
+    @Override
     public void reloadSpeed(int y) {
         super.reloadSpeed(y);
     }
@@ -15,5 +20,10 @@ public class VIbeBreaker extends Weapons{
     @Override
     public void ammoCapacity(int capacity) {
         super.ammoCapacity(200);
+    }
+
+    @Override
+    public void ammoColor() {
+
     }
 }
