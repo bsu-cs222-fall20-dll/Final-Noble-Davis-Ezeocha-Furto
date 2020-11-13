@@ -9,12 +9,12 @@ public class VIbeBreaker extends Weapons{
 
     @Override
     public void shoot(boolean fire) {
-        super.shoot(fire);
+        super.shoot(true);
     }
 
     @Override
     public void reloadSpeed(int y) {
-        super.reloadSpeed(y);
+        super.reloadSpeed(1);
     }
 
     @Override
