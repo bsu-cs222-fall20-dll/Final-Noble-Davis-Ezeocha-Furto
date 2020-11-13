@@ -37,7 +37,6 @@ public class ProgressBarController {
 
     public void initialize(){
         progressBar.progressProperty().bind(progressNumber);
-
     }
 
 
