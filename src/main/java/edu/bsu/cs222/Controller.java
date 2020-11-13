@@ -1,6 +1,7 @@
 package edu.bsu.cs222;
 
 
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -152,14 +153,17 @@ public class Controller extends CalendarUI{
     public void notifyLoss() {
     }
 
-    public void progressToNextDay(int i) {
+    public void progressToNextDay(int i ) {
+        progressBarController.setProgressNumber(100);
+        progressToNextDay(1);
+        restartProgressBar();
     }
 
 
     public void notifyWin() {
-
         ProgressBarController progressBarController = new ProgressBarController();
-        progressBarController.progressBar.progressProperty().bind(progressToNextDay(0)progressBarController.progressNumber);
+        //do you guys think i need to to bind the progress bar to something?
+        progressBarController.progressBar.progressProperty();
 
     }
 }
