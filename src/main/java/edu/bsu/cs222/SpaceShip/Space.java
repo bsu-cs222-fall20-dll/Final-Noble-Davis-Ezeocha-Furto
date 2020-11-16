@@ -1,8 +1,13 @@
 package edu.bsu.cs222.SpaceShip;
 
+import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
+
 public class Space {
     Asteroid asteroid;
     SpaceShip spaceShip;
+    @FXML
+    Pane space;
 
     public Space(){//set color of the black space we are acustom to
 
