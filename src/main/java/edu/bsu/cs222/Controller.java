@@ -39,11 +39,9 @@ public class Controller extends CalendarUI{
     @FXML
     private ProgressBarController progressBarController;
 
-    public ArrayList<Games> gameList = new ArrayList<Games>();//all the games to be randomize and create
+    public ArrayList<String> gameList = new ArrayList<String>();//all the games to be randomize and create
     ArrayList<String> listOfDailyChallenge = new ArrayList<>();
     private String currentGame = "Main Menu";
-    //private int[] gameChosen; fix later
-
 
     public void initialize(){
         addGamesToTheGameList();
@@ -66,7 +64,7 @@ public class Controller extends CalendarUI{
 
     }
     private void addGamesToTheGameList(){
-        gameList.add(TicTacToe);//
+        gameList.add("TicTacToe");//for iterartion 3 turn from string to gae object
 
     }
     private void showInformation(){
@@ -86,9 +84,6 @@ public class Controller extends CalendarUI{
         alert.show();
     }
 
-    public void randomizeGame(){//parse thru game choices and load game
-        gameList; //list of games
-    }
     public void listofChallenges(){
         listOfDailyChallenge.add("Win Once");
         listOfDailyChallenge.add("Win twice");
@@ -117,11 +112,11 @@ public class Controller extends CalendarUI{
         random.nextInt(challengeId);
     }
     public void startChallenge(int mode){//begins daily challege
-        randomizeGame();
         currentGame = " ";
         resetGamePane();
         progressBarController.resetProgressBar();
-        ticTacToeController.initialize(this,mode);
+        ticTacToeController.initialize(this,
+                mode);
         ticTacToe.setVisible(true);
         gameName.setText("Tic Tac Toe");
         randomlychooseChallenge();
