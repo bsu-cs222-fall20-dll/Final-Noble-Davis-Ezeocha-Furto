@@ -40,7 +40,7 @@ public class VIbeBreaker extends BattleShip{
     @Override
     public void move(int speed) {
         super.move(30);
-        graphicsContext.drawImage(vibeBreaker,positionX,positionY,15,30,);
+        graphicsContext.drawImage(vibeBreaker,positionX,positionY,15,30,15,121,1,12);
 
     }
     @Override
