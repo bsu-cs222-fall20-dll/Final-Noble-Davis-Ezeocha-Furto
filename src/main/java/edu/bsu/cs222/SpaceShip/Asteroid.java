@@ -47,7 +47,7 @@ public class Asteroid implements moveable, drawable{
     @Override
         public void draw() {
         if (explosion) {
-            graphicsContext.drawImage(asteroidExplosion, explosionSpans % explosionCol * explosionWidth, (explosionSpans / explosionRows) * explosionHeight + 1, explosionWidth, explosionHeight, positionX, positionY, size);
+            graphicsContext.drawImage(asteroidExplosion, explosionSpans % explosionCol * explosionWidth, (explosionSpans / explosionRows) * explosionHeight + 1, explosionWidth, explosionHeight);
         }
     }
 }
