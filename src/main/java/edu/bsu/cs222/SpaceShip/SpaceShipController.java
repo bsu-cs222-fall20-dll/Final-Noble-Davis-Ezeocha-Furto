@@ -171,7 +171,7 @@ public class SpaceShipController {
         if(pressedKeys > 1){
             return;
         }
-        if()
+        if(leftKeyPressed && gameStatus.l)
 
     }
 

@@ -2,8 +2,8 @@ package edu.bsu.cs222.SpaceShip;
 
 public class CargoShuttle  extends SpaceShip{
     @Override
-    public void move(int speed, int direction) {
-        super.move(speed, direction);
+    public void move(int speed) {
+        super.move(1);
     }
 
     @Override

@@ -7,10 +7,11 @@ import java.util.Random;
 import static edu.bsu.cs222.SpaceShip.SpaceWars.graphicsContext;
 
 public class Asteroid implements moveable, drawable{
+    private int EXPLOSION_Distance;
+
     //implementing interefaces
     @Override
-    public void move(int speed) {
-
+    public void move(int speed){
     }
     private void detectCollision(){
 
@@ -27,9 +28,10 @@ public class Asteroid implements moveable, drawable{
     static final int explosionHeight = 100;
     static final int explosionRows = 3;
     static final int explosionCol= 3;
-    static final int explosionSteps= 15;
+    static int explosionSpans= 15;
 
     static final  Image fallingAsteroid[] = {
+            aesteroidImage,
             aesteroidImage,
             aesteroidImage,
             aesteroidImage,
@@ -39,14 +41,13 @@ public class Asteroid implements moveable, drawable{
     boolean explosion;
     boolean destroyed;
     public void update(){
-        if(explosion) explosionSteps++;
-        destroyed = explosionSteps > EXPLOSION_STEPS;
+        if(explosion) explosionSpans++;
+        destroyed = explosionSpans > EXPLOSION_Distance;
     }
     @Override
         public void draw() {
-            if(explosion){
-                graphicsContext.drawImage(asteroidExplosion,explosionSteps % explosionCol * explosionWidth,(explosionSteps / explosionRows) * explosionHeight +1, explosionWidth, explosionHeight, positionX, positionY, size, size);
-            }
-            else {
-                gc.drawImage(vibeBreaker,positionX,positionY,size,size); }
+        if (explosion) {
+            graphicsContext.drawImage(asteroidExplosion, explosionSpans % explosionCol * explosionWidth, (explosionSpans / explosionRows) * explosionHeight + 1, explosionWidth, explosionHeight, positionX, positionY, size);
+        }
+    }
 }

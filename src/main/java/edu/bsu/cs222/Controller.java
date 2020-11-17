@@ -146,6 +146,8 @@ public class Controller extends CalendarUI{
     }
 
     public void notifyLoss() {
+        ProgressBarController progressBarController = new ProgressBarController();
+        progressBarController.progressBar.progressProperty();
     }
 
     public void progressToNextDay(int i ) {

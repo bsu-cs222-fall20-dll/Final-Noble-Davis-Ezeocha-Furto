@@ -4,9 +4,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class SpaceWars {
+    public final SpaceWarsGameStatus gameStatus = new SpaceWarsGameStatus();
 
 
     public static GraphicsContext graphicsContext;
+    private String winner;
+
     private void playersAction(int asteroidDestroyed){
         gameStatus.countPoint(asteroidDestroyed);
         checkVictory();//if destroyed amount required
@@ -14,6 +17,7 @@ public class SpaceWars {
 
 
     private void checkVictory(){
+
         if(gameStatus.checkBenchmark() !=0){
             declareWin(gameStatus.checkBenchmark());
         }

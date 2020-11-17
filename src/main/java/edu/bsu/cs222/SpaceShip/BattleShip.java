@@ -20,7 +20,7 @@ public abstract class BattleShip extends Weapons implements moveable,drawable{
         this.positionX = positionX;
         this.positionY = positionY;
         this.size = size;
-        //this.maxShots = asteroid.maxFallingAsteroidAtOneTime * placeholderNumber;
+        this.maxShots = asteroid.maxFallingAsteroidAtOneTime * placeholderNumber;
     }
     @Override
     public void fireRate(int x, int y ) {

@@ -10,8 +10,16 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="edu.bsu.cs222.SpaceShip.SpaceShipController"
             prefHeight="400.0" prefWidth="600.0">
-    <Pane fx:id="space" prefHeight="600.0" prefWidth="800.0" snapToPixel="false">
-
-    </Pane>
+    <BorderPane prefHeight="400" prefWidth="600">
+        <center>
+            <GridPane fx:id="space" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" gridLinesVisible="false"/>
+        </center>
+        <bottom>
+            <Button mnemonicParsing="false" text="Shoot" BorderPane.alignment="CENTER" />
+        </bottom>
+        <top>
+            <Button mnemonicParsing="false" text="Help" BorderPane.alignment="CENTER" />
+        </top>
+    </BorderPane>
 
 </AnchorPane>
