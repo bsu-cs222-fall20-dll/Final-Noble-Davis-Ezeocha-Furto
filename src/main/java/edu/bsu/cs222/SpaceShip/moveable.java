@@ -1,5 +1,5 @@
 package edu.bsu.cs222.SpaceShip;
 
 public interface moveable {
-    void move(int speed, int direction);
+    void move(int speed);
 }

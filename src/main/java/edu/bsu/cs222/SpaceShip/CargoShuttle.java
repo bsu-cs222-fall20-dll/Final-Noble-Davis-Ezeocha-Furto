@@ -18,7 +18,7 @@ public class CargoShuttle  extends SpaceShip{
     private void dropCargo(){
 
     }
-    public CargoShuttle(String spaceshipName){
-        super(spaceshipName);
+    public CargoShuttle(){
+        super("CargoBus");
     }
 }

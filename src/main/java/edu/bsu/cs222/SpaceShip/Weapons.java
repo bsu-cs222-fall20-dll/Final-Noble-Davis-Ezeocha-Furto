@@ -3,7 +3,7 @@ package edu.bsu.cs222.SpaceShip;
 public abstract class Weapons implements shootable, Ammunition {
 
     @Override
-    public void fireRate(int x) {
+    public void fireRate(int x, int y) {
 
     }
     public void shoot(boolean fire){

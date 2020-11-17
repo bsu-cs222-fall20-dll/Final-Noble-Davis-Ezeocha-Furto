@@ -2,11 +2,16 @@ package edu.bsu.cs222.SpaceShip;
 
 import edu.bsu.cs222.Controller;
 import edu.bsu.cs222.ProgressBarController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 
 public class SpaceShipController {
     @FXML
@@ -21,40 +26,54 @@ public class SpaceShipController {
     private boolean gameIsCurrentlyBeingPlayed = false;
     private SpaceWars game;
     private int mode;
+    private ChangeListener<Boolean> listener = null;
+    private BitSet leftAndRightBitSet = new BitSet();
+    private SpaceWarsGameStatus gameStatus;
 
     private Controller mainController;
     final ProgressBarController progressBarController = new ProgressBarController();
+    private enum KEY{
+        RIGHT(1),
+        LEFT(3);
+        final int value;
 
+        KEY(final int newValue){
+            value = newValue;
+        }
+        public int getValue(){
+            return value;
+        }
+    }
     public void initialize(Controller controller, int mode){
         this.mainController = controller;
         this.mode = mode;
-        startGame();
-
+        if(listener !=null){
+            space.focusedProperty().removeListener(listener);
+        }
+        startSpaceWars();
+        listener = new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                gameIsCurrentlyBeingPlayed = newValue;
+                if(gameIsCurrentlyBeingPlayed){
+                    startGame();
+                }
+            }
+        }
         mainController.gameNotificationLabel.setText("Win to see the next Day");
     }
+
+    private void startSpaceWars() {
+    }
+
     private void createGameplayButtonList(){
         gameplayButtons.add(shoot);
         gameplayButtons.add(spaceShipSwitch);
     }
-    private void playersAction(int asteroidDestroyed){
-        gameStatus.countPoint(asteroidDestroyed);
-        checkVictory();//if destroyed amount required
-    }
-    private void checkVictory(){
-        if(gameStatus.checkBenchmark() !=0){
-            declareWin(gameStatus.checkBenchmark());
-        }
-    }
+
+
     private void updateGameStatus() {
         game.gameStatus.addMove(0,PlayerNumber(cell0.getText()));
-        game.gameStatus.addMove(0,PlayerNumber(cell1.getText()));
-        game.gameStatus.addMove(0,PlayerNumber(cell2.getText()));
-        game.gameStatus.addMove(0,PlayerNumber(cell3.getText()));
-        game.gameStatus.addMove(0,PlayerNumber(cell4.getText()));
-        game.gameStatus.addMove(0,PlayerNumber(cell5.getText()));
-        game.gameStatus.addMove(0,PlayerNumber(cell6.getText()));
-        game.gameStatus.addMove(0,PlayerNumber(cell7.getText()));
-        game.gameStatus.addMove(0,PlayerNumber(cell8.getText()));
         if (game.gameStatus.checkBoard() !=0 || turnNumber == 9){
             String winner = convertPlayerNumberToString(game.gameStatus.checkBoard());
             gameIsPlaying = false;
@@ -91,7 +110,68 @@ public class SpaceShipController {
 
     private void startGame() {
         gameIsCurrentlyBeingPlayed= true;
-        game = new SpaceWars();
+        if(gameStatus.spaceWars.points() >= passingLength){
+            endSpaceWars();
+        }
+
+    }
+
+    private void endSpaceWars() {
+        if(mode == 0){
+            mainController.notifyProgressBar();
+            gameIsCurrentlyBeingPlayed = false;
+        }
+        if (mode == 1){
+            mainController.notifyWin();
+            mainController.restartProgressBar();
+            mainController.progressToNextDay(1);
+        }
+    }
+
+    private void getArrowInput(){
+        space.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if(checkLeftKeyCode(event)){
+                    leftAndRightBitSet.set(KEY.RIGHT.getValue());
+                }
+                else if(checkRightKeyCode(event)){
+                    leftAndRightBitSet.set(KEY.LEFT.getValue());
+                }
+                setDirection();
+            }
+        });
+        space.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                final boolean noLeftAndRightInBitSet = checkNoKeysPressedInBitSet();
+                removeKeyFromBitSet(event);
+                if(checkLeftKey(event) && noLeftAndRightInBitSet){
+                    leftAndRightBitSet.set(KEY.RIGHT.getValue(),true);
+                }else if(checkRightKey(event) && noLeftAndRightInBitSet){
+                    leftAndRightBitSet.set(KEY.RIGHT.getValue(),true);
+                }
+                setDirection();
+            }
+        });
+
+    }
+    private void setDirection(){
+        boolean leftKeyPressed = leftAndRightBitSet.get(KEY.LEFT.getValue());
+        boolean rightKeyPressed = leftAndRightBitSet.get(KEY.RIGHT.getValue());
+
+        int pressedKeys =0;
+
+        if(leftKeyPressed){
+            pressedKeys++;
+        }
+        if(rightKeyPressed){
+            pressedKeys++;
+        }
+        if(pressedKeys > 1){
+            return;
+        }
+        if()
 
     }
 

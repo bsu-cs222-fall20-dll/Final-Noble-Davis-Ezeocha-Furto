@@ -9,7 +9,7 @@ public abstract class SpaceShip implements moveable {
     }
 
     @Override
-    public void move(int speed, int direction) {
+    public void move(int speed) {
 
     }
     void getshieldStrength(){

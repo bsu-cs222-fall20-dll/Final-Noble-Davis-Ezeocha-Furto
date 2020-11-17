@@ -3,8 +3,8 @@ package edu.bsu.cs222.SpaceShip;
 public class RoidBlaster extends Weapons {
 
     @Override
-    public void fireRate(int x) {
-        super.fireRate(100);
+    public void fireRate(int x, int y) {
+        super.fireRate(100,9);
     }
 
     @Override

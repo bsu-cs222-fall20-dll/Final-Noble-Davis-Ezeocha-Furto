@@ -4,20 +4,20 @@ import javafx.scene.image.Image;
 
 import java.util.Random;
 
+import static edu.bsu.cs222.SpaceShip.SpaceWars.graphicsContext;
+
 public class Asteroid implements moveable, drawable{
     //implementing interefaces
     @Override
-    public void move(int speed, int direction) {
+    public void move(int speed) {
 
     }
     private void detectCollision(){
 
     }
 
-    @Override
-    public void draw() {
 
-    }
+
     //asteroid Specific
     private static final Random asteroids = new Random();
     private static final int asteroidSize =30;
@@ -35,8 +35,18 @@ public class Asteroid implements moveable, drawable{
             aesteroidImage,
             aesteroidImage,
     };
-    final int maxFallingAsteroidAtOneTime = 30, maxShots= maxFallingAsteroidAtOneTime * 2;
-
-
-
+    final int maxFallingAsteroidAtOneTime = 30;
+    boolean explosion;
+    boolean destroyed;
+    public void update(){
+        if(explosion) explosionSteps++;
+        destroyed = explosionSteps > EXPLOSION_STEPS;
+    }
+    @Override
+        public void draw() {
+            if(explosion){
+                graphicsContext.drawImage(asteroidExplosion,explosionSteps % explosionCol * explosionWidth,(explosionSteps / explosionRows) * explosionHeight +1, explosionWidth, explosionHeight, positionX, positionY, size, size);
+            }
+            else {
+                gc.drawImage(vibeBreaker,positionX,positionY,size,size); }
 }
