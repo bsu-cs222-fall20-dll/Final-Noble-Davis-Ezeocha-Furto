@@ -269,7 +269,10 @@ public class MinesweeperController {
     }
 
     private void checkVictory() {
-        
+        boolean[] bombCells = game.gameStatus.bombCells;
+        boolean[] shownCells = game.gameStatus.shownCells;
+        boolean[] flaggedCells = game.gameStatus.flaggedCells;
+
         
     }
 
