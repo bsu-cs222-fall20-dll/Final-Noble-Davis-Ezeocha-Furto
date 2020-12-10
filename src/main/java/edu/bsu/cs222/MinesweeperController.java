@@ -281,6 +281,18 @@ public class MinesweeperController {
             if(bombCells[bomb] && flaggedCells[bomb]){
                 flaggedBombs++;
             }
+            if(shownCells[bomb]){
+                shownCellCount++;
+            }
+            if (flaggedBombs + shownCellCount == 81){
+                if (mode == 0){
+                    endGame();
+                }else if (mode ==1){
+                    mainController.notifyWin();
+                    resetBoard();
+                    mainController.restartProgressBar();
+                }
+            }
         }
         
     }
@@ -305,6 +317,10 @@ public class MinesweeperController {
 
     private void updateGoalLabel() {
         mainController.gameNotificationLabel.setText("Goal: Flag 9 mines (" + flagCount + "/" + bombCount + ")");
+    }
+    private void endGame(){
+        mainController.notifyWin();
+        mainController.progressToNextDay(0);
     }
 
 }
