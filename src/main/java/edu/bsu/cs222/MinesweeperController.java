@@ -278,7 +278,9 @@ public class MinesweeperController {
             if (bombCells[bomb] && !flaggedCells[bomb]){
                 return;
             }
-            if
+            if(bombCells[bomb] && flaggedCells[bomb]){
+                flaggedBombs++;
+            }
         }
         
     }
