@@ -90,6 +90,107 @@ public class MinesweeperController {
         buttons.get(index).setStyle("-fx-background-color: #8fcae5");
         game.gameStatus.revealCell(index);
         revealTheCloseCells(index);
+        if(index == 0){ //top left
+            if(cells[index + 1] == 0){
+                revealWhereNoBombsAre(index + 1);
+            }
+            if(cells[index + 9] == 0){
+                revealWhereNoBombsAre(index + 9);
+            }
+        }
+        else if(index < 8){ //top middle
+            if(cells[index - 1] == 0){
+                revealWhereNoBombsAre(index - 1);
+            }
+            if(cells[index + 1] == 0){
+                revealWhereNoBombsAre(index + 1);
+            }
+            if(cells[index + 9] == 0){
+                revealWhereNoBombsAre(index + 9);
+            }
+        }
+        else if(index == 8){ //top right
+            if(cells[index - 1] == 0){
+                revealWhereNoBombsAre(index - 1);
+            }
+            if(cells[index + 9] == 0){
+                revealWhereNoBombsAre(index + 9);
+            }
+        }
+        else if(index == 72){ // bottom left
+            if(cells[index - 9] == 0){
+                revealWhereNoBombsAre(index - 9);
+            }
+            if(cells[index + 1] == 0){
+                revealWhereNoBombsAre(index + 1);
+            }
+        }
+        else if(index > 72 && index < 80){ // bottom middle
+            if(cells[index - 9] == 0){
+                revealWhereNoBombsAre(index - 9);
+            }
+            if(cells[index - 1] == 0){
+                revealWhereNoBombsAre(index - 1);
+            }
+            if(cells[index + 1] == 0){
+                revealWhereNoBombsAre(index + 1);
+            }
+        }
+        else if(index == 80){ // bottom left
+            if(cells[index - 9] == 0){
+                revealWhereNoBombsAre(index - 9);
+            }
+            if(cells[index - 1] == 0){
+                revealWhereNoBombsAre(index - 1);
+            }
+        }
+        else if(index % 9 == 0){ // left middle
+            if(cells[index - 9] == 0){
+                revealWhereNoBombsAre(index - 9);
+            }
+            if(cells[index + 1] == 0){
+                revealWhereNoBombsAre(index + 1);
+            }
+            if(cells[index + 9] == 0){
+                revealWhereNoBombsAre(index + 9);
+            }
+        }
+        else if((index + 1) % 9 == 0){ // right middle
+            if(cells[index - 9] == 0){
+                revealWhereNoBombsAre(index - 9);
+            }
+            if(cells[index - 1] == 0){
+                revealWhereNoBombsAre(index - 1);
+            }
+            if(cells[index + 9] == 0){
+                revealWhereNoBombsAre(index + 9);
+            }
+        }
+        else{ //center
+            if(cells[index - 9] == 0){
+                revealWhereNoBombsAre(index - 9);
+            }
+            if(cells[index - 1] == 0){
+                revealWhereNoBombsAre(index - 1);
+            }
+            if(cells[index + 1] == 0){
+                revealWhereNoBombsAre(index + 1);
+            }
+            if(cells[index + 9] == 0){
+                revealWhereNoBombsAre(index + 9);
+            }
+        }
+    }
+
+    private void revealTheCloseCells(int index) {
+        if (index == 0){
+            sweepCell(index + 1);
+            sweepCell(index + 9);
+            sweepCell(index + 10);
+        }
+        else if (index < 8){
+
+        }
     }
 
     private void revealBombs() {
