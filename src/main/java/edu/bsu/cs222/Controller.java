@@ -80,6 +80,8 @@ public class Controller extends CalendarUI{
             case "Snake":
                 alert.setContentText("Use the arrows to manevuever around and each stuff, or the use W to move up, S to move down, A to move left, and D to move right. \n the more you eat the bigger you get. \n Remember don't hit walls or your tail.");
                 break;
+            case "MineSweeper":
+                alert.setContentText("CLer th Space without hitting the bombs");
         }
         alert.show();
     }
