@@ -81,7 +81,14 @@ public class MinesweeperController {
     }
 
     private void revealBombs() {
-        f
+        for (int i = 0; i < cells.size(); i++){
+            int cell = game.gameStatus.cells[i];
+            if (cell == -1){
+                cells.get(i).setText("&#xe311;");
+                cells.get(i).setStyle("-fx-background-color: #ff0000");
+            }
+        }
+        mainController.notifyLoss();
 
     }
 
