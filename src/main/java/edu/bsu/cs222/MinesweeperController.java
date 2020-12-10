@@ -55,8 +55,11 @@ public class MinesweeperController {
         return eventHandler;
     }
 
-    private void sweepCell(int i) {
-        int
+    private void sweepCell(int index) {
+        int cell = game.gameStatus.cells[index];
+        if (game.gameStatus.shownCells[index] || game.gameStatus.flaggedCells[index]){
+            return;
+        }
 
     }
 
