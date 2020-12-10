@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MinesweeperController {
     @FXML
-    private List<Button> cells;
+    private List<Button> buttons;
 
     private Controller mainController;
     private Minesweeper game;
@@ -30,15 +30,15 @@ public class MinesweeperController {
     }
 
     private void resetBoard() {
-        for (Button cell : cells){
+        for (Button cell : buttons){
             cell.setText("");
             cell.setStyle("-fx-background-color: #dbdbdb");
         }
     }
 
     private void setCellButtonHandlers() {
-        for (int i = 0; i < cells.size(); i++){
-            final Button block = cells.get(i);
+        for (int i = 0; i < buttons.size(); i++){
+            final Button block = buttons.get(i);
             block.setOnMouseClicked(makeEventHandlerForCell(i));
         }
     }
@@ -73,8 +73,8 @@ public class MinesweeperController {
             checkVictory();
         }
         else{
-            cells.get(index).setText("" + cell);
-            cells.get(index).setStyle("-fx-background-color: #8fcae5");
+            buttons.get(index).setText("" + cell);
+            buttons.get(index).setStyle("-fx-background-color: #8fcae5");
             game.gameStatus.revealCell(index);
             checkVictory();
         }
@@ -82,14 +82,22 @@ public class MinesweeperController {
     }
 
     private void revealWhereNoBombsAre(int index) {
+        int[] cells = game.gameStatus.cells;
+        boolean[] shownCells = game.gameStatus.shownCells;
+        if (shownCells[index]){
+            return;
+        }
+        buttons.get(index).setStyle("-fx-background-color: #8fcae5");
+        game.gameStatus.revealCell(index);
+        revealTheCloseCells(index);
     }
 
     private void revealBombs() {
-        for (int i = 0; i < cells.size(); i++){
+        for (int i = 0; i < buttons.size(); i++){
             int cell = game.gameStatus.cells[i];
             if (cell == -1){
-                cells.get(i).setText("&#xe311;");
-                cells.get(i).setStyle("-fx-background-color: #ff0000");
+                buttons.get(i).setText("&#xe311;");
+                buttons.get(i).setStyle("-fx-background-color: #ff0000");
             }
         }
         mainController.notifyLoss();
