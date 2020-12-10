@@ -273,6 +273,20 @@ public class MinesweeperController {
     }
 
     private void flagged(int i) {
+        boolean isCellFlagged = game.gameStatus.flaggedCells[i];
+        if (game.gameStatus.shownCells[i]){
+            return;
+        }
+        if (isCellFlagged){
+            game.gameStatus.unflagCell(i);
+            buttons.get(i).setText("");
+            flagCount--;
+            updateGoalLabel();
+        }
+        else {
+            game.gameStatus.flagCell(i);
+            buttons.get(i).setText("F");
+        }
 
     }
 
