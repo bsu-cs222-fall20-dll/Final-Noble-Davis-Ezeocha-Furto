@@ -195,6 +195,52 @@ public class MinesweeperController {
             sweepCell(index + 9);
             sweepCell(index + 10);
         }
+        else if(index == 8){ //top right
+            sweepCell(index - 1);
+            sweepCell(index + 8);
+            sweepCell(index + 9);
+        }
+        else if(index == 72){ // bottom left
+            sweepCell(index - 9);
+            sweepCell(index - 8);
+            sweepCell(index + 1);
+        }
+        else if(index > 72 && index < 80){ // bottom middle
+            sweepCell(index - 10);
+            sweepCell(index - 9);
+            sweepCell(index - 8);
+            sweepCell(index - 1);
+            sweepCell(index + 1);
+        }
+        else if(index == 80){ // bottom left
+            sweepCell(index - 10);
+            sweepCell(index - 9);
+            sweepCell(index - 1);
+        }
+        else if(index % 9 == 0){ // left middle
+            sweepCell(index - 9);
+            sweepCell(index - 8);
+            sweepCell(index + 1);
+            sweepCell(index + 9);
+            sweepCell(index + 10);
+        }
+        else if((index + 1) % 9 == 0){ // right middle
+            sweepCell(index - 10);
+            sweepCell(index - 9);
+            sweepCell(index - 1);
+            sweepCell(index + 8);
+            sweepCell(index + 9);
+        }
+        else{ //center
+            sweepCell(index - 10);
+            sweepCell(index - 9);
+            sweepCell(index - 8);
+            sweepCell(index - 1);
+            sweepCell(index + 1);
+            sweepCell(index + 8);
+            sweepCell(index + 9);
+            sweepCell(index + 10);
+        }
 
     }
 
