@@ -60,7 +60,18 @@ public class MinesweeperController {
         if (game.gameStatus.shownCells[index] || game.gameStatus.flaggedCells[index]){
             return;
         }
+        if (cell == -1){
+            revealBombs();
+            checkVictory();
+        }
 
+    }
+
+    private void revealBombs() {
+    }
+
+    private void checkVictory() {
+        
     }
 
     private void flagged(int i) {
