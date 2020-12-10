@@ -30,6 +30,10 @@ public class MinesweeperController {
     }
 
     private void resetBoard() {
+        for (Button cell : cells){
+            cell.setText("");
+            cell.setStyle("-fx-background-color: #dbdbdb");
+        }
     }
 
     private void setCellButtonHandlers() {
@@ -89,7 +93,19 @@ public class MinesweeperController {
             }
         }
         mainController.notifyLoss();
+        restartGame();
+        if (mode == 1){
+            mainController.restartProgressBar();
+        }
 
+    }
+
+    private void restartGame() {
+        flagCount = 0;
+        updateGoalLabel();
+        resetBoard();
+        game.gameStatus.reset();
+        game.start();
     }
 
     private void checkVictory() {
