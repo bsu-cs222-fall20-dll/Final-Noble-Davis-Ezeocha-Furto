@@ -272,7 +272,14 @@ public class MinesweeperController {
         boolean[] bombCells = game.gameStatus.bombCells;
         boolean[] shownCells = game.gameStatus.shownCells;
         boolean[] flaggedCells = game.gameStatus.flaggedCells;
-
+        int shownCellCount = 0;
+        int flaggedBombs = 0;
+        for (int bomb = 0; bomb < 81; bomb++){
+            if (bombCells[bomb] && !flaggedCells[bomb]){
+                return;
+            }
+            if
+        }
         
     }
 
