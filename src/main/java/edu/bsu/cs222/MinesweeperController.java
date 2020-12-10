@@ -64,10 +64,25 @@ public class MinesweeperController {
             revealBombs();
             checkVictory();
         }
+        else if (cell == 0){
+            revealWhereNoBombsAre(index);
+            checkVictory();
+        }
+        else{
+            cells.get(index).setText("" + cell);
+            cells.get(index).setStyle("-fx-background-color: #8fcae5");
+            game.gameStatus.revealCell(index);
+            checkVictory();
+        }
 
     }
 
+    private void revealWhereNoBombsAre(int index) {
+    }
+
     private void revealBombs() {
+        f
+
     }
 
     private void checkVictory() {
