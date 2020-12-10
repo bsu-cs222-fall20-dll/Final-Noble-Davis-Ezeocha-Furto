@@ -196,6 +196,7 @@ public class MinesweeperGameStatus {
     }
 
     private void findBombs() {
+        for (int i = 0; i < cells.length)
 
     }
 }
