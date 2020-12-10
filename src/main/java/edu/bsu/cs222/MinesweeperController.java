@@ -17,6 +17,24 @@ public class MinesweeperController {
     private int mode;
 
     public void initialize(Controller controller, int mode){
+        this.mainController = controller;
+        this.mode = mode;
+        game = new Minesweeper(bombCount);
+        setCellButtonHandlers();
+        resetBoard();
+        game.start();
+        updateGoalLabel();
+    }
+
+    private void resetBoard() {
+    }
+
+    private void setCellButtonHandlers() {
+
+    }
+
+    private void updateGoalLabel() {
+        mainController.gameNotificationLabel.setText("Goal: Flag 9 mines (" + flagCount + "/" + bombCount + ")");
 
     }
 }
