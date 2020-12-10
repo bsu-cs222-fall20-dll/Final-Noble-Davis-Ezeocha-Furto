@@ -189,8 +189,13 @@ public class MinesweeperController {
             sweepCell(index + 10);
         }
         else if (index < 8){
-
+            sweepCell(index - 1);
+            sweepCell(index + 1);
+            sweepCell(index + 8);
+            sweepCell(index + 9);
+            sweepCell(index + 10);
         }
+
     }
 
     private void revealBombs() {
