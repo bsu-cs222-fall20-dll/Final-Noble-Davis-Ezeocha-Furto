@@ -1,9 +1,6 @@
 package edu.bsu.cs222;
 
 
-import javafx.beans.property.DoubleProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -23,6 +20,8 @@ public class Controller extends CalendarUI{
 
     @FXML
     private Pane ticTacToe;
+    @FXML
+    private Pane minesweeper;
 
     @FXML
     private Button startDailyChallengeButton;
@@ -35,36 +34,33 @@ public class Controller extends CalendarUI{
 
     @FXML
     private TicTacToeController ticTacToeController;
+    @FXML
+    private MinesweeperController minesweeperController;
 
     @FXML
     private ProgressBarController progressBarController;
 
-    public ArrayList<String> gameList = new ArrayList<String>();//all the games to be randomize and create
+    public ArrayList<String> gameList = new ArrayList<>();//all the games to be randomize and create
     ArrayList<String> listOfDailyChallenge = new ArrayList<>();
     private String currentGame = "Main Menu";
+
 
     public void initialize(){
         addGamesToTheGameList();
         progressBarController.initialize();
-        startDailyChallengeButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                gameNotificationLabel.setText("");
-                startTicTacToe(0);
-                startChallenge(0);
-            }
+        startDailyChallengeButton.setOnAction(event -> {
+            gameNotificationLabel.setText("");
+            startTicTacToe(0);
+            startMinesweeper(0);
+            startChallenge(0);
         });
-        instruction.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                showInformation();
-            }
-        });
+        instruction.setOnAction(event -> showInformation());
         instruction.setFocusTraversable(false);
 
     }
     private void addGamesToTheGameList(){
-        gameList.add("TicTacToe");//for iterartion 3 turn from string to gae object
+        gameList.add("TicTacToe");
+        gameList.add("Minesweeper");//for iterartion 3 turn from string to gae object
 
     }
     private void showInformation(){
@@ -82,6 +78,7 @@ public class Controller extends CalendarUI{
                 break;
             case "MineSweeper":
                 alert.setContentText("CLer th Space without hitting the bombs");
+                break;
         }
         alert.show();
     }
@@ -91,8 +88,9 @@ public class Controller extends CalendarUI{
         listOfDailyChallenge.add("Win twice");
         listOfDailyChallenge.add("Win thrice");
     }
-    public int challengeId;
-    public int setChallengeToNumber(){
+    //no challenges
+    public int challengeId = -1;
+    public void setChallengeToNumber(){
         listofChallenges();
         if (listOfDailyChallenge.add("Win Once")) {
             challengeId = 0;
@@ -103,10 +101,7 @@ public class Controller extends CalendarUI{
         else if(listOfDailyChallenge.add("Win Thrice")){
             challengeId = 2;
         }
-        else{//no challenges
-            challengeId = -1;
-        }
-        return challengeId;
+        else challengeId = -1;
     }
     public void randomlychooseChallenge(){
         setChallengeToNumber();
@@ -131,6 +126,17 @@ public class Controller extends CalendarUI{
         ticTacToe.setVisible(true);
         gameName.setText("TicTacToe");
     }
+    public void startMinesweeper(int mode){
+        currentGame = "Minesweeper";
+        if (mode == 1){
+            restartProgressBar();
+        }
+        minesweeperController.initialize(this,mode);
+        resetGamePane();
+        minesweeper.setVisible(true);
+        gameName.setText("Minesweeper");
+    }
+
 
     private void resetGamePane() {
         Pane[] gamePane= new Pane[]{
