@@ -10,14 +10,18 @@ import java.util.List;
 
 public class MinesweeperController {
     @FXML
-    private List<Button> buttons;
+    private final List<Button> buttons;
 
     private Controller mainController;
     private Minesweeper game;
 
-    private int bombCount = 9;
+    private final int bombCount = 9;
     private int flagCount = 0;
     private int mode;
+
+    public MinesweeperController(List<Button> buttons) {
+        this.buttons = buttons;
+    }
 
     public void initialize(Controller controller, int mode){
         this.mainController = controller;
@@ -45,15 +49,12 @@ public class MinesweeperController {
 
     private EventHandler<? super MouseEvent> makeEventHandlerForCell(int i) {
         EventHandler<MouseEvent> eventHandler;
-        eventHandler = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                MouseButton button = event.getButton();
-                if (button == MouseButton.PRIMARY){
-                    sweepCell(i);
-                }else if(button == MouseButton.SECONDARY){
-                    flagged(i);
-                }
+        eventHandler = event -> {
+            MouseButton button = event.getButton();
+            if (button == MouseButton.PRIMARY){
+                sweepCell(i);
+            }else if(button == MouseButton.SECONDARY){
+                flagged(i);
             }
         };
         return eventHandler;
