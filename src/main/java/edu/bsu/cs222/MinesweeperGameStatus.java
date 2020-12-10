@@ -163,7 +163,33 @@ public class MinesweeperGameStatus {
                     if(cells[i + 9] == -1){
                         bombCount++;
                     }
+                }else{ //center
+                    if(cells[i - 10] == -1){
+                        bombCount++;
+                    }
+                    if(cells[i - 9] == -1){
+                        bombCount++;
+                    }
+                    if(cells[i - 8] == -1){
+                        bombCount++;
+                    }
+                    if(cells[i - 1] == -1){
+                        bombCount++;
+                    }
+                    if(cells[i + 1] == -1){
+                        bombCount++;
+                    }
+                    if(cells[i + 8] == -1){
+                        bombCount++;
+                    }
+                    if(cells[i + 9] == -1){
+                        bombCount++;
+                    }
+                    if(cells[i + 10] == -1){
+                        bombCount++;
+                    }
                 }
+                cells[i] = bombCount;
             }
         }
 
